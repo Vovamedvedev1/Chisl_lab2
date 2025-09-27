@@ -20,11 +20,9 @@ class GUI:
         graph_frame = ttk.Frame(root)
         graph_frame.grid(row=1, column=0, sticky=(tk.W, tk.E, tk.N, tk.S), padx=5, pady=5)
 
-        font_large = ('Arial', 14)  # Увеличенный шрифт для надписей
-        font_medium = ('Arial', 13)  # Увеличенный шрифт для полей ввода
+        font_large = ('Arial', 14)  
+        font_medium = ('Arial', 13)  
 
-        # Располагаем все элементы ввода в одну строку
-        # Функция f(x)
         ttk.Label(input_frame, text="Функция f(x):", font=font_large).grid(column=0, row=0, sticky=tk.W, padx=(0, 5))
         self.entry_func = ttk.Entry(input_frame, width=15, font=font_medium)
         self.entry_func.grid(column=1, row=0, sticky=(tk.W, tk.E), padx=(0, 20))
