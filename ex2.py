@@ -34,14 +34,20 @@ def get_gauss_polinom(x_0, function_str, a, b, eps):
         count_iter += 1
     return L
 
-
-func_string = input("Введите функцию: ")
-a = float(input("Введите a: "))
-b = float(input("Введите b: "))
-x_0 = float(input("Введите x0: "))
-teor = function(x_0, math_value=func_string)
-pract = get_gauss_polinom(x_0, func_string, a, b,eps=10**(-10))
-print("Теоретическое значение: ", teor)
-print("Вычиссленное значение: ", pract)
-print("Абсолютная погрешность: ", abs(teor - pract))
-print("Относительная погрешность: ", abs(teor - pract) / abs(pract))
+try:
+    func_string = input("Введите функцию: ")
+    a = float(input("Введите a: "))
+    b = float(input("Введите b: "))
+    if a >= b:
+        raise Exception("а должно быть строго меньше b")
+    x_0 = float(input("Введите x0: "))
+    if x_0 < a or x_0 > b:
+        raise Exception("x_0 не должно выходить за пределы указанного диапазона")
+    teor = function(x_0, math_value=func_string)
+    pract = get_gauss_polinom(x_0, func_string, a, b,eps=10**(-10))
+    print("Теоретическое значение: ", teor)
+    print("Вычиссленное значение: ", pract)
+    print("Абсолютная погрешность: ", abs(teor - pract))
+    print("Относительная погрешность: ", abs(teor - pract) / abs(pract))
+except Exception as e:
+    print(str(e))
