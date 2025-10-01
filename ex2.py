@@ -5,13 +5,13 @@ from lagrange_polinom import function, get_max_derivative
 
 def get_gauss_polinom(x_0, function_str, a, b, eps):
     h = (b - a)
-    R = float('inf')   
+    R = float('inf')   #остаточный член
     max_iter = 10000   
     count_iter = 0 
-    while abs(R) > eps and count_iter <= max_iter:
-        h /= 2
-        x = np.arange(a, b + h, h)
-        n = len(x)
+    while abs(R) > eps and count_iter <= max_iter: #до тех пор пока остаточный член не удовлетворит точности 10**(-4)
+        h /= 2 #новый шаг получаем делением пополам 
+        x = np.arange(a, b + h, h) #перестраиваем сетку
+        n = len(x) #кол  узлов
         y = function(x, math_value=function_str)
         imin = 0
         d_min = abs(x[0] - x_0)
