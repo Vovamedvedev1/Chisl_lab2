@@ -7,7 +7,6 @@ def get_gauss_polinom(x_0, function_str, a, b, eps):
     h = (b - a)
     R = float('inf')   
     max_iter = 10000   
-    y_0 = function(x_0, math_value=function_str)
     count_iter = 0 
     while abs(R) > eps and count_iter <= max_iter:
         h /= 2
