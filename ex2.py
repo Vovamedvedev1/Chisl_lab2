@@ -15,9 +15,9 @@ def get_gauss_polinom(x_0, function_str, a, b, eps):
         n = len(x)
         y = function(x, math_value=function_str)
         imin = 0
-        d_min = sqrt((x[0]-x_0)**2 + (y[0]-y_0)**2)
+        d_min = abs(x[0] - x_0)
         for i in range(1, n):
-            d = sqrt((x[i]-x_0)**2 + (y[i]-y_0)**2)
+            d = abs(x[i] - x_0)
             if d < d_min:
                 imin, d_min = i, d
         if imin == 0:
@@ -44,7 +44,7 @@ try:
     if x_0 < a or x_0 > b:
         raise Exception("x_0 не должно выходить за пределы указанного диапазона")
     teor = function(x_0, math_value=func_string)
-    pract = get_gauss_polinom(x_0, func_string, a, b,eps=10**(-10))
+    pract = get_gauss_polinom(x_0, func_string, a, b,eps=10**(-4))
     print("Теоретическое значение: ", teor)
     print("Вычиссленное значение: ", pract)
     print("Абсолютная погрешность: ", abs(teor - pract))
